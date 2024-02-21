@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hohoemi_navi_partner_app/reaction_page.dart';
+import 'package:hohoemi_navi_partner_app/route/route_controller.dart';
 
-
-Future<void> main() async{
+Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -12,7 +11,9 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    final router = ref.watch(routeProvider);
+
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -32,7 +33,7 @@ class MyApp extends ConsumerWidget {
           ),
         ),
       ),
-      home: const ReactionPage()
+      routerConfig: router,
     );
   }
 }
