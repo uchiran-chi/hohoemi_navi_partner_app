@@ -14,25 +14,36 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routeProvider);
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'hohoemi-navi',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-            color: Color(0xFFECA5B8),
-            titleTextStyle:
-                TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
-            centerTitle: true),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            fixedSize: const Size(double.infinity, 40),
-            textStyle:
-                const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-            backgroundColor: const Color(0xFFF1B3C5),
-            foregroundColor: const Color(0xFFFFFFFF),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+              color: Color(0xFFECA5B8),
+              titleTextStyle:
+                  TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
+              centerTitle: true),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(double.infinity, 40),
+              textStyle:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+              backgroundColor: const Color(0xFFF1B3C5),
+              foregroundColor: const Color(0xFFFFFFFF),
+            ),
           ),
-        ),
-      ),
+          inputDecorationTheme: InputDecorationTheme(
+              fillColor: Colors.white,
+              filled: true,
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
+                borderRadius: BorderRadius.circular(15),
+              ))),
       routerConfig: router,
     );
   }

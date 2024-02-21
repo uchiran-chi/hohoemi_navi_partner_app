@@ -19,7 +19,13 @@ class _InputFieldState extends State<InputField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.text, textAlign: TextAlign.left),
+        Text(
+          widget.text,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
         TextField(controller: widget.controller),
       ],
     );
@@ -47,6 +53,42 @@ class _InputNumberFieldState extends State<InputNumberField> {
             controller: widget.controller,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
+      ],
+    );
+  }
+}
+
+class InputFieldMultiLines extends StatefulWidget {
+  final String text;
+  final TextEditingController controller;
+
+  InputFieldMultiLines(
+      {super.key, required this.text, required this.controller});
+
+  @override
+  _InputFieldMultiLinesState createState() => _InputFieldMultiLinesState();
+}
+
+class _InputFieldMultiLinesState extends State<InputFieldMultiLines> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(widget.text, textAlign: TextAlign.left),
+        Container(
+          height: 200,
+          child: TextField(
+            textAlignVertical: TextAlignVertical.top,
+            controller: widget.controller,
+            style: TextStyle(
+              fontSize: 16,
+            ),
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            expands: true,
+          ),
+        )
       ],
     );
   }

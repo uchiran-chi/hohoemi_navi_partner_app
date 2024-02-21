@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../comment_page.dart';
 import '../login_page.dart';
+import '../qr_page.dart';
 import '../reaction_page.dart';
 import '../success_registration_page.dart';
 // import '../pages/first_signup_page.dart';
@@ -32,6 +33,10 @@ final routeProvider = Provider<GoRouter>(
       GoRoute(
         path: '/success_registration_page',
         builder: (context, _) => const SuccessRegistrationPage(),
+      ),
+      GoRoute(
+        path: '/qr_page',
+        builder: (context, _) => const QRPage(),
       ),
     ],
   ),

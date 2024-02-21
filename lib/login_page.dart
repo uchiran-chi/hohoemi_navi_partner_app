@@ -23,16 +23,37 @@ class LoginPage extends ConsumerWidget {
     final userState = ref.watch(userProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('会員検索'),
-      ),
       body: Container(
-        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 130),
+              child: Column(children: [
+                Text(
+                  'ほほえみ Navi',
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFFE84B84),
+                  ),
+                ),
+                Text(
+                  'for パートナー',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFFE84B84),
+                  ),
+                ),
+              ]),
+            ),
             InputField(text: '会員番号', controller: controller),
+            SizedBox(
+              height: 50,
+            ),
             SizedBox(
               width: deviceWidth * 0.7,
               child: ElevatedButton(
@@ -40,8 +61,25 @@ class LoginPage extends ConsumerWidget {
                   await userState.login(controller.text);
                   // ref.watch(reactionProvider.notifier).getReactionState(1);
                   context.push('/reaction_page');
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('ログインが完了しました。'),
+                    ),
+                  );
                 },
                 child: const Text('ログイン'),
+              ),
+            ),
+            SizedBox(
+              width: deviceWidth * 0.7,
+              child: ElevatedButton(
+                onPressed: () async {
+                  // await userState.login(controller.text);
+                  // ref.watch(reactionProvider.notifier).getReactionState(1);
+                  context.push('/qr_page');
+                },
+                child: const Text('QRコード'),
               ),
             ),
           ],

@@ -33,7 +33,10 @@ class CommentPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InputField(text: 'コメント', controller: controller),
+            InputFieldMultiLines(text: 'コメント', controller: controller),
+            SizedBox(
+              height: 50,
+            ),
             SizedBox(
               width: deviceWidth * 0.7,
               child: ElevatedButton(
@@ -45,7 +48,13 @@ class CommentPage extends ConsumerWidget {
                   await userState.createReaction(
                       selectedEmotion, controller.text);
 
-                  context.push('/success_registration_page');
+                  context.push('/');
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('リアクションの送信が完了しました。'),
+                    ),
+                  );
                 },
                 child: const Text('送信'),
               ),
@@ -53,23 +62,6 @@ class CommentPage extends ConsumerWidget {
           ],
         ),
       ),
-      // body: Center(
-      //   child: Column(children: <Widget>[
-      //     const TextField(
-      //         autofocus: true,
-      //         decoration: InputDecoration(
-      //             border: InputBorder.none, hintText: 'Enter a search term')),
-      //     ElevatedButton(
-      //       onPressed: () async {
-      //         final selectedIndex = emotionList.indexOf(true);
-      //         String selectedEmotion =
-      //             emotionProvider.keys.toList()[selectedIndex];
-      //         await updateReaction(1, selectedEmotion);
-      //       },
-      //       child: const Text('OK'),
-      //     ),
-      //   ]),
-      // ),
     );
   }
 }
