@@ -14,7 +14,7 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routeProvider);
 
     return MaterialApp.router(
-      title: 'hohoemi-navi',
+      title: 'ほほえみNavi for パートナー',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -29,6 +29,9 @@ class MyApp extends ConsumerWidget {
               fixedSize: const Size(double.infinity, 40),
               textStyle:
                   const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
               backgroundColor: const Color(0xFFF1B3C5),
               foregroundColor: const Color(0xFFFFFFFF),
             ),

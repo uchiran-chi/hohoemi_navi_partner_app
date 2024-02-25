@@ -2,12 +2,18 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+const isLocal = false;
+
+const String baseUrl = isLocal
+    ? 'http://localhost:80'
+    : 'http://hohoemi-navi-lb-1845998535.us-east-1.elb.amazonaws.com';
+
 Future<void> updateReaction(
     int id, String selectedEmotion, String comment) async {
   try {
     print(selectedEmotion);
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:3001/api/v1/users/${id}/reactions'),
+      Uri.parse('$baseUrl/api/v1/users/${id}/reactions'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },
@@ -44,7 +50,7 @@ class ProtectedUser {
 Future<ProtectedUser> login(String protectedId) async {
   try {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:3001/api/v1/watchers/login'),
+      Uri.parse('$baseUrl/api/v1/watchers/login'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },

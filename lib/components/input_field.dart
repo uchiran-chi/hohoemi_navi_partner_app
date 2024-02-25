@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// TODO: statefulとstateless
-
 class InputField extends StatefulWidget {
   final String text;
   final TextEditingController controller;
